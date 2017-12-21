@@ -22,10 +22,6 @@
     name: "app-nav",
     data() {
       return {
-        // navMenuClassName: {'nav-menu': true, 'nav-menu-active': false},
-        // navUserClassName: {'nav-user': true, 'nav-user-active': false},
-
-
         isMenu: true,
         isMenuActive: false,
         isUser: true,
@@ -35,9 +31,6 @@
     },
     methods: {
       changeNavMenuClassName() {
-        // this.navMenuClassName["nav-menu"] = false;
-        // this.navMenuClassName["nav-menu-active"] = true;
-
         this.isMenu = false;
         this.isMenuActive = true;
         this.isUser = true;
@@ -46,7 +39,6 @@
       changeNavUserClassName() {
         this.isMenu = true;
         this.isMenuActive = false;
-
         this.isUser = false;
         this.isUserActive = true;
       },

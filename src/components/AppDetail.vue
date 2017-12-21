@@ -54,15 +54,6 @@
           this.filmDetail = res.data.data.film;
           // console.log(this.filmDetail);
 
-          // // 遍历
-          // filmList.forEach((item) => {
-          //   if (item.id === filmDetailId / 1) {
-          //     this.filmDetail = item;
-          //     // 显示电影名
-          //     this.$root.$data.filmName = this.filmDetail.name;
-          //   }
-          // });
-          //
         } else {
           console.log('网络异常~~', res);
         }

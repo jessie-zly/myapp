@@ -37,24 +37,11 @@
           this.$store.dispatch('showAppName');
         }
 
-        // // nav-menu
-        // if (/menu/.test(route.path)) {
-        //   this.$store.dispatch('showNavMenu',{'nav-menu': true, 'nav-menu-active': false});
-        // } else {
-        //   this.$store.dispatch('hideNavMenu',{'nav-menu': false, 'nav-menu-active': true});
-        // }
-        //
-        // // nav-user
-        // if (/user/.test(route.path)) {
-        //   this.$store.dispatch('showNavUser');
-        // } else {
-        //   this.$store.dispatch('hideNavUser');
-        // }
       }
     },
     methods: {},
     mounted() {
-      if (/user|detail\/*/.test(this.$route.path)) {
+      if (/detail\/*/.test(this.$route.path)) {
         this.$store.dispatch('hideAppName');
       } else {
         this.$store.dispatch('showAppName');
@@ -71,7 +58,6 @@
   #app {
     width: 320px;
     height: 552px;
-    /*position: relative;*/
   }
 
 </style>
