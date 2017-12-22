@@ -3,7 +3,7 @@
     <div class="order-show" v-show="this.$root.list.length===0">暂无订单信息~~</div>
     <ul class="order">
       <li class="order-detail" v-for="item in this.$root.list">
-        <div class="order-cash"> ¥ {{item.price}}</div>
+        <div class="order-cash"> ¥ {{item.cash}}</div>
         <div class="order-info">
           <div class="info-time">
             <p>2017-12-28</p>
@@ -25,7 +25,7 @@
   export default {
     name: "user-order",
     mounted(){
-       console.log(this.$root.list);
+       // console.log(this.$root.list,3333);
     },
   }
 </script>

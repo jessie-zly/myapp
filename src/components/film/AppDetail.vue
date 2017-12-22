@@ -1,6 +1,6 @@
 <template>
   <div class="app-detail">
-    <div class="slideInDown detail-wrap">
+    <div class="slideInUp detail-wrap">
       <div class="detail-origin">
         <img :src="filmDetail.cover.origin" alt="图片未找到">
       </div>
@@ -67,7 +67,7 @@
        */
       buyNow() {
         if (!localStorage.username) {
-          alert('尚未登录,现在登录?');
+          confirm('尚未登录,现在登录?') === true && this.$router.push({path: '/user/login'});
         } else {
           // 购物车处理
           if (this.$root.list.length === 0) {
@@ -78,31 +78,41 @@
             this.$root.userInfo.order.price = ~~(10 + Math.random() * 40) + '';
             this.$root.userInfo.order.count = this.count + '';
             this.$root.userInfo.order.cash = this.count * this.$root.userInfo.order.price + '';
-            //
+            // 存入购物车
             this.$root.list.push(this.$root.userInfo.order);
           } else {
-            // 购物车有影片的时候
+            // 标志
+            let bstop = true;
+            // 购物车有相同影片的时候
             this.$root.list.forEach(item => {
-              if (item.id !== this.filmDetail.id) {
-                // 不存在对应影片的时候
-                this.count = 1;
-                this.$root.userInfo.order = {
-                  id: this.filmDetail.id,
-                  orderName: this.filmDetail.name,
-                  count: this.count,
-                  price: ~~(10 + Math.random() * 40),
-                  cash: this.count * item.price,
-                };
-                //
-                this.$root.list.push(this.$root.userInfo.order);
-              } else {
-                // 存在对应影片的时候
-                item.count++;
-                item.cash = item.count * item.price;
+                if (item.id / 1 === this.filmDetail.id / 1) {
+                  // 存在对应影片的时候
+                  item.count++;
+                  item.cash = item.count * item.price;
+                  // 有相同影片的时候改变标志状态
+                  bstop = false;
+                }
               }
-            });
+            );
+            // 不存在对应影片的时候
+            if (bstop) {
+              // 赋值
+              this.count = 1;
+              const price = ~~(10 + Math.random() * 40);
+              // 解构
+              const newOrder = {
+                id: this.filmDetail.id,
+                orderName: this.filmDetail.name,
+                count: this.count,
+                price: price,
+                cash: this.count * price,
+              };
+              // 存入购物车
+              this.$root.list.unshift(newOrder);
+            }
           }
         }
+        console.log(this.$root.list, 2222);
       }
     }
   }

@@ -47,7 +47,7 @@
           return false;
         } else if (this.$root.userInfo.username !== this.username) {
           this.showMsg = true;
-          this.msg = '此用户尚未注册';
+          this.msg = '尚未注册,点击进行注册';
           return false;
         } else {
           this.msg = '';

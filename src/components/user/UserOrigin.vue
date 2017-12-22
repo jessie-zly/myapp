@@ -41,6 +41,12 @@
           <b>&gt;</b>
         </div>
       </dd>
+      <dd class="user-delete" @click.prevent="deleteOrder">
+        <div>
+          <i></i>
+          <span>清空订单</span>
+        </div>
+      </dd>
       <dd class="user-exit" @click="goToLogin">
         <div>
           <i></i>
@@ -70,6 +76,12 @@
       },
       goToOrder() {
         this.$router.push({path: '/user/order'});
+      },
+      deleteOrder() {
+        this.count = 0;
+        this.cash = 0;
+        this.$root.list = [];
+        alert('清空成功!');
       },
     },
     mounted() {
