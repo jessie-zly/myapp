@@ -57,6 +57,7 @@
   #app {
     width: 320px;
     height: 552px;
+    overflow: scroll;
     position: relative;
   }
 </style>

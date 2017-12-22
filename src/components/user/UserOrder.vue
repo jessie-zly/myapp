@@ -1,17 +1,18 @@
 <template>
   <div class="user-order">
+    <div class="order-show" v-show="this.$root.list.length===0">暂无订单信息~~</div>
     <ul class="order">
-      <li class="order-detail">
-        <div class="order-cash"> ¥ 28.00</div>
+      <li class="order-detail" v-for="item in this.$root.list">
+        <div class="order-cash"> ¥ {{item.price}}</div>
         <div class="order-info">
           <div class="info-time">
             <p>2017-12-28</p>
             <span>10:55</span>
           </div>
           <div class="info-desc">
-            <span>至暗时刻</span>
+            <span>{{item.orderName}}</span>
             <p>上海宝山大光明影城</p>
-            <p>座位 x 1</p>
+            <p>座位 x {{item.count}}</p>
           </div>
         </div>
       </li>
@@ -22,13 +23,23 @@
 
 <script>
   export default {
-    name: "user-order"
+    name: "user-order",
+    mounted(){
+       console.log(this.$root.list);
+    },
   }
 </script>
 
 <style scoped>
   .user-order {
     background: #EBEBEB;
+  }
+
+  .user-order > .order-show {
+    margin-top: 100px;
+    text-align: center;
+    font: 14px/20px '';
+    color: #222;
   }
 
   .user-order > .order {

@@ -17,17 +17,7 @@
           <span>影票订单</span>
         </div>
         <div>
-          <span>10</span>张
-          <b>&gt;</b>
-        </div>
-      </dd>
-      <dd class="user-order" @click="goToOrder">
-        <div>
-          <i></i>
-          <span>影票待付订单</span>
-        </div>
-        <div>
-          <span>1</span>张
+          <span>{{this.count}}</span>张
           <b>&gt;</b>
         </div>
       </dd>
@@ -44,10 +34,10 @@
       <dd class="user-cash">
         <div>
           <i></i>
-          <span>账户余额</span>
+          <span>待付金额</span>
         </div>
         <div>
-          <span>0</span>元
+          <span>{{this.cash}}</span>元
           <b>&gt;</b>
         </div>
       </dd>
@@ -68,6 +58,12 @@
 <script>
   export default {
     name: "user-origin",
+    data() {
+      return {
+        count: 0,
+        cash: 0,
+      }
+    },
     methods: {
       goToLogin() {
         this.$router.push({path: '/user/login'});
@@ -90,6 +86,12 @@
         }
       }).catch((res) => {
         console.log('film data error', res)
+      });
+
+      //
+      this.$root.list.forEach(item => {
+        this.count += item.count / 1;
+        this.cash += item.cash / 1;
       });
     },
   }

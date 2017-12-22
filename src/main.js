@@ -71,10 +71,18 @@ Vue.use(vueLoading);
 new Vue({
   el: '#app',
   data: {
-    userInfo:{
-      username:'',
-      password:'',
-    }
+    userInfo: {
+      username: '',
+      password: '',
+      order: {
+        id: '',
+        orderName: '',
+        count: '',
+        price: '',
+        cash: '',
+      },
+    },
+    list: [],
   },
   render: h => h(App),
   router, // 路由注册

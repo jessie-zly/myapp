@@ -4,7 +4,9 @@
       <input type="text" name="username" placeholder="请输入手机号" v-model="username">
       <span class="form-check" v-show="(/^1[3|4|5|8]\d{9}$/.test(this.username))||false"
         @click.prevent="sendCode">发送验证码</span>
-      <input type="text" name="password" placeholder="请输入密码/验证码" v-model="password">
+      <input type="text" placeholder="请输入密码" v-model="password">
+      <input type="text" name="password" placeholder="请输入验证码" v-model="checkCode">
+
       <div class="form-msg">
         <span v-show="showMsg">{{msg}}</span>
       </div>
@@ -31,6 +33,7 @@
         password: '',
         msg: '',
         showMsg: false,
+        checkCode: '',
         code: '',
       }
     },
@@ -53,8 +56,21 @@
         // 密码验证
         if (this.password === '') {
           this.showMsg = true;
+          this.msg = '密码不能为空!';
+          return false;
+        } else if (this.$root.userInfo.password !== this.password) {
+          this.showMsg = true;
+          this.msg = '账号或密码有误';
+          return false;
+        } else {
+          this.msg = '';
+          this.showMsg = false;
+        }
+        // 验证码
+        if (this.checkCode === '') {
+          this.showMsg = true;
           this.msg = '验证码不能为空!';
-        } else if (this.code !== this.password) {
+        } else if (this.code !== this.checkCode) {
           this.showMsg = true;
           this.msg = '验证码输入有误...';
           return false;
@@ -77,13 +93,16 @@
       goToReg() {
         this.$router.push({path: './reg'});
       },
-
     },
     mounted() {
-      console.log(window.localStorage,3333);
-
+      if (localStorage.username) {
+        this.username = localStorage.username;
+        this.password = localStorage.password;
+      } else {
+        this.username = '';
+        this.password = '';
+      }
     }
-
   }
 </script>
 

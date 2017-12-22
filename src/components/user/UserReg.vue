@@ -46,7 +46,11 @@
     methods: {
       checkForm() {
         // 用户名验证
-        if (!(/^1[3|4|5|8]\d{9}$/.test(this.username))) {
+        if (this.username === '') {
+          this.showMsg = true;
+          this.msg = '手机号不能为空!';
+          return false;
+        } else if (!(/^1[3|4|5|8]\d{9}$/.test(this.username))) {
           this.showMsg = true;
           this.msg = '请输入正确手机号...';
           return false;
@@ -56,7 +60,11 @@
         }
 
         // 密码验证
-        if (!(/\w{6,20}/.test(this.password))) {
+        if (this.password === '') {
+          this.showMsg = true;
+          this.msg = '密码不能为空!';
+          return false;
+        } else if (!(/\w{6,20}/.test(this.password))) {
           this.showMsg = true;
           this.msg = '密码格式有误...';
         } else {
