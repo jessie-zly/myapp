@@ -25,8 +25,6 @@
     },
     mounted() {
       this.$http({
-        // url: '/data/filmBoard.json',
-
         // https://m.maizuo.com/v4/api/billboard/home?__t=1513736281420
         url: '/api/v4/api/billboard/home?',
       }).then((res) => {

@@ -1,13 +1,11 @@
 <template>
   <div class="film-playing">
-
     <ul>
       <li v-for="item of filmPlayingList" :key="item.id">
         <router-link :to="'/detail/'+item.id" tag="div">
           <div class="film-img">
             <img :src="item.poster.origin" alt="图片未找到">
           </div>
-
           <div class="film-info">
             <dl class="film-item">
               <dt class="film-name">{{item.name}}</dt>
@@ -22,7 +20,6 @@
             </dl>
           </div>
         </router-link>
-
       </li>
     </ul>
   </div>
@@ -40,12 +37,9 @@
 
     mounted() {
       this.$http({
-        // url: '/data/filmPlayingList.json',
-
         // https://m.maizuo.com/v4/api/film/now-playing?page=1&count=7
         url: '/api/v4/api/film/now-playing?page=1&count=10'
       }).then((res) => {
-        // console.log(res.data.data.films,2222);
         if (res.status === 200) {
           this.filmPlayingList = res.data.data.films;
         } else {

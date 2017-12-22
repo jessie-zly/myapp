@@ -82,7 +82,6 @@
         // https://m.maizuo.com/v4/api/me?__t=1513839754934
         url: '/api/v4/api/me',
       }).then((res) => {
-
         // console.log(res, 1111);
         if (res.status === 200) {
           // this.filmComingList = res.data.data.films;

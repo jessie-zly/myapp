@@ -1,14 +1,14 @@
 <template>
   <div class="app-nav">
     <ul>
-      <router-link tag='li' active-class="active" to="/menu" @click.native="changeNavMenuClassName">
-        <a href="javascript:;" :class="{'nav-menu': isMenu, 'nav-menu-active': isMenuActive}"></a>
+      <router-link tag='li' active-class="active" to="/menu">
+        <a href="javascript:;" class="nav-menu"></a>
       </router-link>
       <router-link tag='li' active-class="active" to="/home">
         <a href="javascript:;" v-show="getAppName">苹果电影</a>
       </router-link>
-      <router-link tag='li' active-class="active" to="/user" @click.native="changeNavUserClassName">
-        <a href="javascript:;" :class="{'nav-user': isUser, 'nav-user-active': isUserActive}"></a>
+      <router-link tag='li' active-class="active" to="/user">
+        <a href="javascript:;" class="nav-user"></a>
       </router-link>
     </ul>
   </div>
@@ -21,27 +21,9 @@
   export default {
     name: "app-nav",
     data() {
-      return {
-        isMenu: true,
-        isMenuActive: false,
-        isUser: true,
-        isUserActive: false,
-
-      }
+      return {}
     },
     methods: {
-      changeNavMenuClassName() {
-        this.isMenu = false;
-        this.isMenuActive = true;
-        this.isUser = true;
-        this.isUserActive = false;
-      },
-      changeNavUserClassName() {
-        this.isMenu = true;
-        this.isMenuActive = false;
-        this.isUser = false;
-        this.isUserActive = true;
-      },
     },
     computed: mapGetters([
       'getAppName',
@@ -86,7 +68,7 @@
     width: 30px;
     height: 50px;
     border-right: 1px solid #222;
-    background: url(../assets/images/menu.png) no-repeat center;
+    background: url(../../assets/images/menu.png) no-repeat center;
     background-size: 20px 20px;
   }
 
@@ -94,21 +76,21 @@
     width: 30px;
     height: 50px;
     border-right: 1px solid #222;
-    background: url(../assets/images/menu-active.png) no-repeat center;
+    background: url(../../assets/images/menu-active.png) no-repeat center;
     background-size: 20px 20px;
   }
 
   ul > li > a.nav-user {
     width: 30px;
     height: 50px;
-    background: url(../assets/images/user.png) no-repeat center;
+    background: url(../../assets/images/user.png) no-repeat center;
     background-size: 20px 20px;
   }
 
   ul > li > a.nav-user-active {
     width: 30px;
     height: 50px;
-    background: url(../assets/images/user-active.png) no-repeat center;
+    background: url(../../assets/images/user-active.png) no-repeat center;
     background-size: 20px 20px;
   }
 

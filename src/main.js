@@ -62,7 +62,7 @@ Object.keys(filters).forEach((key) => {
 
 
 // 引入 loading
-import vueLoading from './components/AppLoading';
+import vueLoading from './components/common/AppLoading';
 
 Vue.use(vueLoading);
 

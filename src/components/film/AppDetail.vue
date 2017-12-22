@@ -44,16 +44,12 @@
       // 获取 id
       const filmDetailId = this.$route.params.id;
       this.$http({
-        // url: '/data/filmDetail.json',
-
         // https://m.maizuo.com/v4/api/film/3551?__t=1513736515707
         url: '/api/v4/api/film/' + filmDetailId,
       }).then((res) => {
         if (res.status === 200) {
           // 获取电影信息
           this.filmDetail = res.data.data.film;
-          // console.log(this.filmDetail);
-
         } else {
           console.log('网络异常~~', res);
         }

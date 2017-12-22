@@ -1,6 +1,6 @@
 <template>
   <div class="user-reg">
-    <form action="">
+    <form>
       <div class="reg-name">
         <input type="number" name="username" placeholder=" 请输入手机号码" v-model="username">
         <span class="phone-check" v-show="(/^1[3|4|5|8]\d{9}$/.test(this.username))||false">✔</span>
@@ -24,7 +24,7 @@
       <div class="reg-sub">
         <button class="form-reg" @click.prevent="checkForm">注册</button>
       </div>
-
+      <a class="form-login" @click="goToLogin">已有账号？马上登录</a>
     </form>
 
   </div>
@@ -41,8 +41,6 @@
         check_password: '',
         showMsg: false,
         msg: '',
-        showPhoneCheck: false,
-        showPasswordCheck: false
       }
     },
     methods: {
@@ -56,8 +54,12 @@
         setTimeout(() => {
           this.showMsg = false;
         });
-      }
+      },
+      goToLogin() {
+        this.$router.push({path: './login'});
+      },
     },
+
     mounted() {
 
     }
@@ -137,6 +139,14 @@
     width: 160px;
     outline: none;
     padding: 8px 12px;
+  }
+
+  .user-reg > form > .form-login {
+    display: block;
+    font: 14px/22px '';
+    color: #ccc;
+    text-align: center;
+    margin-top: 10px;
   }
 
 </style>

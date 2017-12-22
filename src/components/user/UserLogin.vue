@@ -1,6 +1,6 @@
 <template>
   <div class="user-login">
-    <form action="" class="form">
+    <form class="form">
       <input type="text" name="username" placeholder="请输入手机号" v-model="username">
       <span class="form-check" v-show="(/^1[3|4|5|8]\d{9}$/.test(this.username))||false" @click="sendCode">发送验证码</span>
       <input type="password" name="password" placeholder="请输入密码/验证码" v-model="password">
@@ -8,6 +8,7 @@
         <span v-show="showMsg">{{msg}}</span>
       </div>
       <button class="form-login" @click="checkForm">登录</button>
+      <a class="form-reg" @click="goToReg">没有账号？马上注册</a>
     </form>
   </div>
 </template>
@@ -79,7 +80,9 @@
         this.showMsg = true;
         this.msg = '验证码为:' + this.code;
       },
-
+      goToReg() {
+        this.$router.push({path: './reg'});
+      },
 
     },
     mounted() {
@@ -144,4 +147,14 @@
     outline: none;
     padding: 8px 12px;
   }
+
+  .user-login > .form > .form-reg {
+    display: block;
+    font: 14px/22px '';
+    color: #ccc;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+
 </style>

@@ -18,14 +18,14 @@
    */
 
   // 模块引入
-  import AppNav from './components/AppNav';
-  import vueLoading from './components/AppLoading';
+  import AppNav from './components/common/AppNav';
+  import vueLoading from './components/common/AppLoading';
   import {mapGetters} from 'vuex';
   //
   export default {
     components: {
       AppNav, // 模块注册
-      vueLoading
+      vueLoading,
     },
 
     watch: {
@@ -36,7 +36,6 @@
         } else {
           this.$store.dispatch('showAppName');
         }
-
       }
     },
     methods: {},
@@ -58,6 +57,6 @@
   #app {
     width: 320px;
     height: 552px;
+    position: relative;
   }
-
 </style>

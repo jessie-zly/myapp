@@ -12,31 +12,31 @@
  **********************************/
 
 // home
-import home from './components/AppHome';
+import home from './components/home/AppHome';
 // detail
-import detail from './components/AppDetail';
+import detail from './components/film/AppDetail';
 
 
 // menu
-import menu from './components/AppMenu';
+import menu from './components/common/AppMenu';
 
 
 // film
-import film from './components/AppFilm';
-import playing from './components/FilmPlaying'; // 子路由--> playing
-import coming from './components/FilmComing'; // 子路由--> coming
+import film from './components/film/AppFilm';
+import playing from './components/film/FilmPlaying'; // 子路由--> playing
+import coming from './components/film/FilmComing'; // 子路由--> coming
 
 
 // user
-import user from './components/AppUser';
-import origin from './components/UserOrigin'; // 子路由--> origin
-import login from './components/UserLogin'; // 子路由--> login
-import reg from './components/UserReg'; // 子路由--> reg
-import order from './components/UserOrder'; // 子路由--> reg
+import user from './components/user/AppUser';
+import origin from './components/user/UserOrigin'; // 子路由--> origin
+import login from './components/user/UserLogin'; // 子路由--> login
+import reg from './components/user/UserReg'; // 子路由--> reg
+import order from './components/user/UserOrder'; // 子路由--> reg
 
 
 // error
-import error from './components/AppError';
+import error from './components/common/AppError';
 
 
 // 配置路由

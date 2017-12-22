@@ -21,7 +21,6 @@
           </div>
         </router-link>
       </li>
-
     </ul>
   </div>
 </template>
@@ -36,14 +35,10 @@
     },
     mounted() {
       this.$http({
-        // 本地数据
-        // url: '/data/filmComingList.json',
-
         // 请求的接口
         // https://m.maizuo.com/v4/api/film/coming-soon?page=1&count=7
         url: '/api/v4/api/film/coming-soon?page=1&count=10',
       }).then((res) => {
-        // console.log(res.data.data.films, 2222);
         if (res.status === 200) {
           this.filmComingList = res.data.data.films;
         } else {

@@ -79,12 +79,9 @@
        * 正在上映
        */
       this.$http({
-        // url: '/data/filmList.json',
-
         // https://m.maizuo.com/v4/api/film/now-playing?__t=1513735567414&page=1&count=5
         url: '/api/v4/api/film/now-playing?page=1&count=3',
       }).then((res) => {
-        // console.log(res.data.data.films);
         if (res.status === 200) {
           this.filmList = res.data.data.films;
         } else {
@@ -98,12 +95,9 @@
        * 即将上映
        */
       this.$http({
-        // url: '/data/filmComingList.json',
-
         // https://m.maizuo.com/v4/api/film/coming-soon?__t=1513735567421&page=1&count=3
         url: '/api/v4/api/film/coming-soon?page=1&count=3',
       }).then((res) => {
-        // console.log(res.data.data.films);
         if (res.status === 200) {
           this.filmSoon = res.data.data.films;
         } else {
