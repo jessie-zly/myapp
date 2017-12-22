@@ -1,5 +1,5 @@
 <template>
-  <div class="app-detail">
+  <div class="fadeInDown app-detail">
     <div class="detail-name">{{filmDetail.name}}</div>
     <div class="detail-origin">
       <img :src="filmDetail.cover.origin" alt="图片未找到">

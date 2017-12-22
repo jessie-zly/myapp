@@ -7,7 +7,7 @@
           <span>用户名</span>
         </div>
         <div>
-          <span>18662334606</span>
+          <span>{{this.$root.userInfo.username }}</span>
           <b>&gt;</b>
         </div>
       </dd>

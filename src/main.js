@@ -71,9 +71,10 @@ Vue.use(vueLoading);
 new Vue({
   el: '#app',
   data: {
-    menuNav: '菜单',
-    titleNav: '苹果电影',
-    userNav: '用户',
+    userInfo:{
+      username:'',
+      password:'',
+    }
   },
   render: h => h(App),
   router, // 路由注册

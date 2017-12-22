@@ -8,13 +8,13 @@
       </div>
 
       <div class="reg-password">
-        <input type="password" name="password" placeholder=" 请输入密码" v-model="password">
+        <input type="text" name="password" placeholder=" 请输入密码" v-model="password">
         <span class="password-check" v-show="(/\w{6,20}/.test(this.password))||false">✔</span>
         <span class="password-check" v-show="!((/\w{6,20}/.test(this.password))||false)">×</span>
       </div>
 
       <div class="reg-password">
-        <input type="password" name="password" placeholder=" 请确认密码" v-model="check_password">
+        <input type="text" name="password" placeholder=" 请确认密码" v-model="check_password">
       </div>
 
       <div class="reg-msg">
@@ -24,7 +24,7 @@
       <div class="reg-sub">
         <button class="form-reg" @click.prevent="checkForm">注册</button>
       </div>
-      <a class="form-login" @click="goToLogin">已有账号？马上登录</a>
+      <a class="form-login" @click.prevent="goToLogin">已有账号？马上登录</a>
     </form>
 
   </div>
@@ -45,24 +45,63 @@
     },
     methods: {
       checkForm() {
-        // 密码确认
-        if (this.check_password !== this.password) {
+        // 用户名验证
+        if (!(/^1[3|4|5|8]\d{9}$/.test(this.username))) {
           this.showMsg = true;
-          this.msg = '两次密码不一致!!!';
+          this.msg = '请输入正确手机号...';
           return false;
-        }
-        setTimeout(() => {
+        } else {
+          this.msg = '';
           this.showMsg = false;
-        });
+        }
+
+        // 密码验证
+        if (!(/\w{6,20}/.test(this.password))) {
+          this.showMsg = true;
+          this.msg = '密码格式有误...';
+        } else {
+          // 密码强度校验
+          let level = 0;
+          if (/\d/.test(this.password)) {
+            level++;
+          }
+          if (/[a-z]/.test(this.password)) {
+            level++;
+          }
+          if (/[A-Z]/.test(this.password)) {
+            level++;
+          }
+          if (/_/.test(this.password)) {
+            level++;
+          }
+          // 提示信息
+          this.showMsg = true;
+          this.msg = '密码强度为' + level;
+
+          // 密码确认
+          if (this.check_password !== this.password) {
+            this.msg = '两次密码不一致!!!';
+            return false;
+          } else {
+            // 存储信息
+            this.$root.userInfo.username = this.username;
+            this.$root.userInfo.password = this.password;
+            // 存到 Local Storage
+            localStorage.setItem('username', this.username);
+            localStorage.setItem('password', this.password);
+            // 注册成功进行路由跳转
+            this.$router.push({path: '/user'});
+          }
+        }
       },
       goToLogin() {
         this.$router.push({path: './login'});
       },
-    },
 
+    },
     mounted() {
 
-    }
+    },
   }
 </script>
 

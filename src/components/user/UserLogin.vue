@@ -2,13 +2,14 @@
   <div class="user-login">
     <form class="form">
       <input type="text" name="username" placeholder="请输入手机号" v-model="username">
-      <span class="form-check" v-show="(/^1[3|4|5|8]\d{9}$/.test(this.username))||false" @click="sendCode">发送验证码</span>
-      <input type="password" name="password" placeholder="请输入密码/验证码" v-model="password">
+      <span class="form-check" v-show="(/^1[3|4|5|8]\d{9}$/.test(this.username))||false"
+        @click.prevent="sendCode">发送验证码</span>
+      <input type="text" name="password" placeholder="请输入密码/验证码" v-model="password">
       <div class="form-msg">
         <span v-show="showMsg">{{msg}}</span>
       </div>
-      <button class="form-login" @click="checkForm">登录</button>
-      <a class="form-reg" @click="goToReg">没有账号？马上注册</a>
+      <button class="form-login" @click.prevent="checkForm">登录</button>
+      <a class="form-reg" @click.prevent="goToReg">没有账号？马上注册</a>
     </form>
   </div>
 </template>
@@ -37,36 +38,29 @@
     methods: {
       checkForm() {
         // 用户名验证
-        if (!(/^1[3|4|5|8]\d{9}$/.test(this.username))) {
+        if (this.username === '') {
           this.showMsg = true;
-          this.msg = '请输入正确手机号...';
+          this.msg = '账号不能为空!';
+          return false;
+        } else if (this.$root.userInfo.username !== this.username) {
+          this.showMsg = true;
+          this.msg = '此用户尚未注册';
           return false;
         } else {
+          this.msg = '';
           this.showMsg = false;
         }
         // 密码验证
-        // if (!(/\w{6,20}/.test(this.password))) {
-        if (this.code / 1 !== this.password / 1) {
+        if (this.password === '') {
+          this.showMsg = true;
+          this.msg = '验证码不能为空!';
+        } else if (this.code !== this.password) {
           this.showMsg = true;
           this.msg = '验证码输入有误...';
+          return false;
         } else {
-          // 密码强度校验
-          let level = 0;
-          if (/\d/.test(this.password)) {
-            level++;
-          }
-          if (/[a-z]/.test(this.password)) {
-            level++;
-          }
-          if (/[A-Z]/.test(this.password)) {
-            level++;
-          }
-          if (/_/.test(this.password)) {
-            level++;
-          }
-          // 提示信息
-          this.showMsg = true;
-          this.msg = '密码强度为' + level + ', 登录跳转中...';
+          this.msg = '';
+          this.showMsg = false;
           // 路由跳转
           this.$router.push({path: '/user'});
         }
@@ -86,7 +80,8 @@
 
     },
     mounted() {
-      // this.checkForm();
+      console.log(window.localStorage,3333);
+
     }
 
   }
@@ -155,6 +150,5 @@
     text-align: center;
     margin-top: 10px;
   }
-
 
 </style>
