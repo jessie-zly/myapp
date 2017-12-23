@@ -11,14 +11,4 @@ export default {
   booleanLoading: false,
   // AppName
   booleanAppName: true,
-  // // nav-menu
-  // booleanNavMenu: true,
-  //
-  // navMenuClassName: {'nav-menu': true, 'nav-menu-active': false},
-  //
-  // navUserClassName: {'nav-user': true, 'nav-user-active': false},
-  //
-  //
-  // // nav-user
-  // booleanNavUser: true,
 }

@@ -23,25 +23,4 @@ export default {
   [types.HIDE_APPNAME]: (state) => {
     state.booleanAppName = false;
   },
-
-  // // nav-menu
-  // [types.SHOW_NAVMENU]: (state,payload) => {
-  //
-  //    console.log(payload);
-  //
-  //
-  //
-  //   state.booleanNavMenu = true;
-  // },
-  // [types.HIDE_NAVMENU]: (state,payload) => {
-  //   state.booleanNavMenu = false;
-  // },
-  //
-  // // nav-user
-  // [types.SHOW_NAVUSER]: (state) => {
-  //   state.booleanNavUser = true;
-  // },
-  // [types.HIDE_NAVUSER]: (state) => {
-  //   state.booleanNavUser = false;
-  // },
 }

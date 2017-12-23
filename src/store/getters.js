@@ -15,14 +15,4 @@ export default {
   getAppName: (state) => {
     return state.booleanAppName;
   },
-
-  // // nav-menu
-  // changeNavMenuClassName: (state) => {
-  //   return state.booleanNavMenu;
-  // },
-  //
-  // // nav-user
-  // changeNavUserClassName: (state) => {
-  //   return state.booleanNavUser;
-  // },
 }

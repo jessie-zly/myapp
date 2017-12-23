@@ -23,27 +23,4 @@ export default {
   hideAppName: ({commit}) => {
     commit(types.HIDE_APPNAME);
   },
-
-  // // nav-menu classname 切换
-  // showNavMenu: ({commit,state}, payload) => {
-  //   //
-  //   const originClassName=payload;
-  //
-  //    console.log(originClassName,1111);
-  //
-  //   commit(types.SHOW_NAVMENU, payload);
-  // },
-  // hideNavMenu: ({commit,state}, payload) => {
-  //    console.log(state,2222);
-  //     console.log(payload,3333);
-  //   commit(types.HIDE_NAVMENU, payload);
-  // },
-  //
-  // // nav-user classname 切换
-  // showNavUser: ({commit}) => {
-  //   commit(types.SHOW_NAVUSER);
-  // },
-  // hideNavUser: ({commit}) => {
-  //   commit(types.HIDE_NAVUSER);
-  // },
 }
