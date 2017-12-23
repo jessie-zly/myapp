@@ -112,7 +112,6 @@
             }
           }
         }
-        console.log(this.$root.list, 2222);
       }
     }
   }
