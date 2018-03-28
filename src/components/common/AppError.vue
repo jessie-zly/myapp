@@ -2,6 +2,9 @@
   <div class="app-error">
     您访问的页面不存在~~
 
+
+    <div ref="hello">傻逼测试</div>
+
     <div v-html='rmb'></div>
 
     <div>
@@ -24,6 +27,17 @@
         dollar: '<span>我是用 mustache 解析出来的</span>'
       }
     },
+    methods:{
+      test(){
+        console.log('div=>$ref 的 this 值',this);
+        console.log('div=>$ref 的 this.$refs 值',this.$refs);
+        console.log('div=>$ref 的 this.$refs.hello 值',this.$refs.hello);
+        console.log('div=>$ref 的 this.$refs.hello.innerHTML 值',this.$refs.hello.innerHTML);
+      }
+    },
+    mounted(){
+      this.test();
+    }
   }
 </script>
 
